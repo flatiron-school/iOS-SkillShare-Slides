@@ -1,0 +1,261 @@
+<!doctype html> <html lang="en"> 
+	<head>
+		<meta charset="utf-8">
+
+		<title>Objective-C</title>
+
+		<meta name="description" content="IOS Skill share course: Objective-C">
+		<meta name="author" content="Joe Burgess">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="css/fontello.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Objective-C</h1>
+				</section>
+
+				<section>
+          <h2>Message Passing</h2>
+          <img src = "img/objc_message_passing.png">
+          <p>Where is this declared/defined?</p>
+				</section>
+
+        <section>
+          <h2>Where Stuff Goes </h2>
+          <ul>
+            <li><em>Declare</em> the class in the header file (.h)</li>
+            <li><em>Define</em> the class in the implementation file (.m)</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>Function Declaration</h2>
+          <p>Declare them in the header(.h) files</p>
+          <img src="img/objc_function_def.png">
+        </section>
+
+        <section>
+          <h2>myObject.h</h2>
+          <pre><code>
+@interface myObject: NSObject {
+  int myInt;
+}
+
+- (id) init;
+- (void) functionWithArg1:(int)arg1 
+                  andArg2:(int)arg2;
+
+@end
+          </code></pre>
+        </section>
+        <section>
+          <h2>myObject.m</h2>
+<pre><code>#import "myObject.h"
+
+@implementation myObject
+
+- (id) init {
+
+  [super init]
+  return self;
+
+}
+
+- (void) functionWithArg1:(int)arg1
+                  andArg2:(int)arg2 {
+
+  NSLog(@"%i",arg1+arg2);
+}
+
+@end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Creating An Object</h2>
+          <p>2 parts of creating an object</p>
+          <ul>
+            <li>Allocate space for the object</li>
+            <li>Create the object in that space</li>
+          </ul>
+          <pre><code>myObject *object = [[myObject alloc] init];</pre></code>
+        </section>
+
+        <section>
+          <h2>What's That Star?</h2>
+          <p>It's complicated.</p> <br />
+          <p>Pretty much it means that variable is an object</p>
+        </section>
+
+        <section>
+          <h2>Using Our Object</h2>
+<pre><code>myObject *object = [[myObject alloc] init];
+[object functionWithArg1:2 andArg2:3];
+</pre></code>
+</section>
+
+        <section>
+          <h2>Memory Management</h2>
+          <p>
+          Automatic Reference Counting. <br /><br />
+          <strong>A.K.A:</strong> You don't have to care anymore
+          </p>
+          <p>As long as something points to object X, X will exist.</p>
+        </section>
+
+        <section>
+          <h2>Encapsulation</h2>
+        <ul>
+          <li>Control how people touch your stuff</li>
+          <li>Setters and Getters</li>
+        </ul>
+      </section>
+
+				<section>
+          <h2>Properties</h2>
+          <p>Setters/getters are annoying and repetitive to write</p>
+          <img src="img/objc_properties.png">
+				</section>
+
+        <section>
+          <h2>Synthesize</h2>
+          <p>Does the implementation for you</p>
+          <img src="img/objc_synthesize.png">
+        </section>
+        <section>
+          <h2>Retaining</h2>
+          <img src="img/retaincycle.png">
+        </section>
+        
+        
+        <section>
+          <h2>Design Patterns</h2>
+          <ul>
+            <li>Delegate Pattern</li>
+            <li>Protocol Pattern</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>Delegate Pattern</h2>
+          <img src = "img/DelegatePattern.png">
+        </section>
+        
+        <section>
+          <h2>Protocol Pattern</h2>
+          <ul>
+            <li>File the states what a class should be able to do</li>
+            <li>no implementation details</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Demo</h1>
+          <aside class="notes">
+            step6
+          </aside>
+        </section>
+
+        <section>
+          <h2>Implement</h2>
+          <code>
+            tableView:cellForRowAtIndexPath
+            numberOfSectionsInTableView:
+            tableView:numberOfRowsInSection:
+            tableView:canEditRowAtIndexPath:
+            tableView:canMoveRowAtIndexPath:
+          </code>
+          <br />
+          <br />
+          <br />
+          <p>
+          1 row, 1 section, no moving, editing possible
+          </p>
+        </section>
+
+        <section>
+          <h2>Selectors</h2>
+          <p>They allow you to pass a function as an argument</p>
+        </section>
+        <section>
+          <h3>Demo</h3>
+          <h3>Implement addButtonPressed</h3>
+          <aside class="notes">
+            step7 and step8
+          </aside>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+        multiplex: {
+                // Example values. Generate your own.
+                secret: '13767947222464030678', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+                id: 'aaaa08d812cc7693', // Obtained from socket.io server
+                url: 'revealjs.jit.su:80' // Location of socket.io server
+            },
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://revealjs.jit.su/socket.io/socket.io.js', async: true }, 
+ { src: 'plugin/multiplex/client.js', async: true },
+ { src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					 // { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+             { src: 'socket.io/socket.io.js', async: true },
+                 { src: 'plugin/notes-server/client.js', async: true },
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

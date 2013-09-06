@@ -1,0 +1,295 @@
+<!doctype html> <html lang="en"> 
+	<head>
+		<meta charset="utf-8">
+
+		<title>UIKit</title>
+
+		<meta name="description" content="IOS Skill share course: UIKit">
+		<meta name="author" content="Joe Burgess">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="css/fontello.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>UIKit</h1>
+          <h3>The Stuff You See</h3>
+				</section>
+        
+        <section>
+          <h2>Tree of UI Elements</h2>
+          <img src="img/windowlayers.jpg">
+        </section>
+
+        <section>
+          <h1>Everything Is A Subview</h1>
+        </section>
+
+        <section>
+          <h2>UITableViewCell</h2>
+          <h3>Two ways to customize UITableViewCells</h3>
+          <ul>
+            <li>Super simple modification in the <code>tableview: cellForRowAtIndexPath:</code> method</li>
+            <li>Anything remotely complex in a custom <code>UITableViewCell</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Something Simple</h2>
+          <p>We're going to do something simple. Let's do it in the <code>cellForRowAtIndexPath:</code> method </p>
+        </section>
+
+        <section>
+          <h2>AttributedString</h2>
+          <ul>
+          <li>Just a formatted string</li>
+          <li>Pass it a <code>NSDictionary</code> of attributes</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>NSDictionary</h2>
+        <p>Key-Value Store</p><br />
+        <p><a target="_blank" href="https://developer.apple.com/library/ios/DOCUMENTATION/UIKit/Reference/NSAttributedString_UIKit_Additions/Reference/Reference.html#//apple_ref/doc/uid/TP40011688-CH1-DontLinkElementID_2">
+          List Of Attribute Constants</a></p>
+      </section>
+
+      <section>
+        <h1>Demo</h1>
+        <aside class="notes">
+          step21
+        </aside>
+      </section>
+
+      <section>
+        <h2>Weird Scrolling Behavior</h2>
+        <p>Remember, <code>tableView: cellForRowAtIndexPath:</code> only gets 
+        called when that cell needs to be redrawn.</p>
+      </section>
+
+      <section>
+        <h2>How Do We Get The TableView To Redraw?</h2>
+        <p>Call <code>reloadData:</code> on the TableView</p>
+      </section>
+
+      <section>
+        <h2>Where To Put reloadData:</h2>
+      </section>
+
+      <section>
+        <h1>Demo</h1>
+        <aside class="notes">
+          step22
+        </aside>
+      </section>
+
+      <section>
+        <h2>Adding the Add Button</h2>
+      </section>
+
+      <section>
+        <h2>Pixel Dimensions of an iPhone</h2>
+        <img src="img/uikit_dimensions.jpg">
+      </section>
+
+      <section>
+        <h1>Demo</h1>
+      </section>
+
+      <section>
+        <h2>Your Turn</h2>
+        <ol>
+          <li>Add a <code>stretchableImage</code> for the <code>UIControlStateNormal</code></li>
+          <li>Add a <code>stretchableImage</code> for the <code>UIControlStateHighlighted</code></li>
+        </ol>
+        <br />
+        <br />
+        <p>Assets in gitlab step23</p>
+      </section>
+
+      <section>
+        <h2>Handling Retina Images</h2>
+        <p>Everything has an <code>@2x</code> version</p>
+      </section>
+
+      <section>
+        <h2>Blocks</h2>
+        <p>Allows you to pass a method as a variable</p>
+        <img src ="img/uikit_blocks.jpg">
+      </section>
+
+      <section>
+        <h1>Demo</h1>
+        <aside class="notes">
+          step24
+        </aside>
+      </section>
+
+      <section>
+        <h2>Your Turn</h2>
+        <ol>
+          <li><code>NSLog</code>When the cancel buton is pressed</li>
+          <li>Bring up keyboard when you hit the +</li>
+        </ol>
+        <aside class="notes">
+          step25
+        </aside>
+      </section>
+
+      <section>
+        <h2>Implementing the Cancel Button</h2>
+        <p>What do we need to change to be able to remove the button and textfield?</p>
+      </section>
+
+      <section>
+        <h2>Right!</h2>
+        <p>We need to convert these to instance variables</p>
+      </section>
+
+      <section>
+        <h1>Demo</h1>
+        <aside class="notes">
+          step26
+        </aside>
+      </section>
+
+      <section>
+        <h2>Your Turn</h2>
+        <ol>
+          <li>On Cancel Button Press, remove the button and the texfield from the superView</li>
+          <li>Add back in title, edit and add button</li>
+        </ol>
+        <aside class="notes">
+          step27
+        </aside>
+      </section>
+
+      <section>
+        <h2>TextField Delegate</h2>
+        <ul>
+          <li><code>textFieldDidEndEditing:</code> Gets called when you leave the textfield</li>
+          <li><code>textFieldShouldReturn:</code> Gets called when you press Return</li>
+          <li>Calling <code>endEditing:YES</code> ends the editing of the textfield</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Your Turn</h2>
+        <ol>
+          <li>Implement textFieldDidEndEditing</li>
+          <li>Implement textFieldShouldReturn. Should add item</li>
+        </ol>
+        <aside class="notes">
+          step28
+        </aside>
+      </section>
+
+      <section>
+        <h2>Animating Out</h2>
+        <p>Go ahead and try to add the animation out</p>
+      </section>
+
+      <section>
+        <h2>It didn't work</h2>
+        <h1>:(</h1>
+      </section>
+
+      <section>
+        <h2>Threading</h2>
+        <p>The animation happened on a different thread.</p>
+        <p>Code kept executing during animation.</p>
+      </section>
+      
+      <section>
+        <h1>Fixing This</h1>
+        <p>Take a look at the <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/clm/UIView/animateWithDuration:animations:">UIView</a> docs</p>
+      </section>
+
+      <section>
+        <p>animateWithDuration:animations:completion</p>
+      </section>
+
+      <section>
+        <h2>Your Turn</h2>
+        <p>Wrap the superview removal in a completion block</p>
+        <aside class="notes">
+          step29
+        </aside>
+      </section>
+
+      
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+        multiplex: {
+                // Example values. Generate your own.
+                secret: '13767947222464030678', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+                id: 'aaaa08d812cc7693', // Obtained from socket.io server
+                url: 'revealjs.jit.su:80' // Location of socket.io server
+            },
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+// { src: 'http://revealjs.jit.su/socket.io/socket.io.js', async: true }, 
+// { src: 'plugin/multiplex/client.js', async: true },
+// { src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					 { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'socket.io/socket.io.js', async: true },
+            //    { src: 'plugin/notes-server/client.js', async: true },
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

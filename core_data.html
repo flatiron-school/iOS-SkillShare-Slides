@@ -1,0 +1,244 @@
+<!doctype html> <html lang="en"> 
+	<head>
+		<meta charset="utf-8">
+
+		<title>Core Data</title>
+
+		<meta name="description" content="IOS Skill share course: Core Data">
+		<meta name="author" content="Joe Burgess">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="css/fontello.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Core Data</h1>
+          <h3>It's really confusing</h3>
+				</section>
+
+        <section>
+          <h2>All the Moving Parts</h2>
+          <img src = "img/coredata.png">
+        </section>
+
+        <section>
+          <h2>But First, The Singleton</h2>
+          <p>
+          Design pattern that lends its self to the MVC-Store Pattern. Same as MVC
+          but model talks to a store which handles the actual saving of stuff.
+          </p>
+          <br />
+          <br />
+          <p>
+          One copy of the store.
+          </p>
+        </section>
+        
+        <section>
+          <h2>Static Variables</h2>
+          <p>Variables that exist across instances of classes</p>
+        </section>
+
+				<section>
+          <h2>Demo</h2>
+          <aside class="notes">
+            step9
+          </aside>
+				</section>
+        
+        <section>
+          <h2>Your Turn</h2>
+          <ol>
+            <li>Import Data Store into View Controller</li>
+            <li>Synthesize a property</li>
+            <li>Set it and NSLog it in View Controller</li>
+            <small>hint: learn NSLog(@"%@")</small>
+            <li>Output it in 2 different place</li>
+            <small>should be the same</small>
+          </ol>
+        </section>
+
+				<section>
+          <h2>OK, Now Let's Do Core Data</h2>
+          <p>First we gotta do a bunch of stock code</p>
+				</section>
+
+        <section>
+          <h2>Implement</h2>
+          <ol>
+            <li>Synthesize a NSmanagedObjectContext, NSManagedObjectModel(readonly) and a NSpersistantStoreCorrdinator(readonly)</li>
+          </ol>
+        </section>
+
+				<section>
+          <h2>Let's Create Our Model</h2>
+				</section>
+
+        <section>
+          <h2>Bunch Of Stock Code</h2>
+        </section>
+
+        <section>
+          <h2>Implement</h2>
+          <ol>
+            <li>In ItemsDataStore <code>init</code> method create an Item and save it</li>
+            <li>In ViewController <code>viewDidLoad</code> method display all Items in the context</li>
+          </ol>
+          <aside class="notes">
+            step14
+          </aside>
+        </section>
+
+        <section>
+          <h2>NSFetchedResultsController</h2>
+          <p>
+          Class to make Core Data play nice with UITableView
+          </p>
+        </section>
+
+        <section>
+          <h2>Let's look at some documentation</h2>
+        </section>
+
+        <section>
+          <h2>So let's create the fetchedResultsController</h2>
+          <aside class="notes">
+            step15
+          </aside>
+        </section>
+        
+        <section>
+          <h2>Implement the Delegate</h2>
+          <ol>
+            <li>Access the TableView from the data store</li>
+            <li>Implement NSFetchedResultsControllerDelegate</li>
+            <small>self.tableView...but which self?</small>
+            <li>Implement <code>controllerWillChangeContent</code></li>
+            <li>Implement <code>controllerdidChangeObject:atIndexPath:forChangeType:newIndexPath:</code></li>
+            <small>Just handle NSFetchedResultsChangeInsert and NSFetchedResultsChangeDelete</small><br />
+            <small>Switch statements</small><br />
+            <small>checkout <code>insertRowsAtIndexPaths:withRowAnimation:</code></small>
+            <li>Implement <code>controllerDidChangeContent:</code></li>
+          </ol>
+          <aside class="notes">
+            step16
+          </aside>
+        </section>
+        
+        <section>
+          <h2>link Up TableView with DataStore</h2>
+          <aside class="notes">
+            step17
+          </aside>
+        </section>
+       
+        <section>
+          <h2>Implement</h2>
+          <ol>
+            <li>Method in Store to return a new Item to be edited. Should set timestamp to now and completed to NO</li>
+            <li>Method to add item to store</li>
+            <li>Create new Item when add button is pressed</li>
+          </ol>
+          <aside class="notes">
+            step18
+          </aside>
+        </section>
+        <section>
+          <h2>Deleting Items</h2>
+          <ul>
+            <li>Navigation Bar Items</li>
+            <li>editButtonItem</li>
+          </ul>
+          <aside class="notes">
+            step19
+          </aside>
+        </section>
+        
+        <section>
+          <h2>Detail View Controller</h2>
+          <ul>
+            <li>Static Cells</li>
+            <li>prepareForSegue</li>
+            <li>Pass Item to Detail Controller</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Demo</h1>
+          <aside class="notes">
+            step20
+          </aside>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+        multiplex: {
+                // Example values. Generate your own.
+                secret: '13767947222464030678', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+                id: 'aaaa08d812cc7693', // Obtained from socket.io server
+                url: 'revealjs.jit.su:80' // Location of socket.io server
+            },
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+// { src: 'http://revealjs.jit.su/socket.io/socket.io.js', async: true }, 
+// { src: 'plugin/multiplex/client.js', async: true },
+// { src: 'plugin/multiplex/master.js', async: true },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					 { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'socket.io/socket.io.js', async: true },
+            //    { src: 'plugin/notes-server/client.js', async: true },
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
