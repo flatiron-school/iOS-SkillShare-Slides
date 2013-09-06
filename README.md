@@ -23,4 +23,5 @@ get to them. Just press `s` when you are viewing the slides and you should get
 a popup with the notes.
 
 ###Code Examples
-All the code is up on github.
+All the code is up on
+[github](https://github.com/flatiron-school/iOS-SkillShare-Code).
